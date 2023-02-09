@@ -1,0 +1,101 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Deontic",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#variable"
+		},
+		{
+			"include": "#constants"
+		  }
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+			  {
+				"name": "comment.line.documentation.deontic",
+				"begin": "//[!/](?=[^/])",
+				"end": "$",
+				"patterns": [
+				  {
+					"include": "#commentContents"
+				  }
+				]
+			  },
+			  {
+				"name": "comment.line.double-slash.deontic",
+				"begin": "//",
+				"end": "$",
+				"patterns": [
+				  {
+					"include": "#commentContents"
+				  }
+				]
+			  }
+			]
+		  },
+		  "commentContents": {
+			"patterns": [
+			  {
+				"match": "\\b(TODO|FIXME|XXX|NOTE)\\b:?",
+				"name": "keyword.todo.deontic"
+			  }
+			]
+		  },
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.deontic",
+				"match": "\\b(kind|type|with|from|package|infixl|infixr|infix|prefix|prefixr|postfix|postfixl|error|end)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.deontic",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.deontic",
+					"match": "\\\\."
+				}
+			]
+		},
+		"variable": {
+			"patterns": [
+			  {
+				"name": "variable.parameter.uppercase.deontic",
+				"match": "(?<![a-zA-Z_])[A-Z][a-zA-Z_]*"
+			  },
+			  {
+				"name": "variable.parameter.lowercase.deontic",
+				"match": "(?<![a-zA-Z_])[a-z][a-zA-Z_]*"
+			  },
+			  {
+				"name": "variable.language.anonymous.deontic",
+				"match": "(?<!\\w)_"
+			  }
+			]
+		  },
+		  "constants": {
+			"patterns": [
+			  {
+				"name": "constant.numeric.integer.deontic",
+				"match": "(?<![a-zA-Z]|/)(\\d+|(\\d+\\.\\d+))"
+			  },
+			  {
+				"name": "string.quoted.double.deontic",
+				"match": "\".*?\""
+			  }
+			]
+		  }
+	},
+	"scopeName": "source.deontic"
+}

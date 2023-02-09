@@ -1,0 +1,25 @@
+{
+  "name": "deontic",
+  "displayName": "deontic-syntax",
+  "description": "Syntax highlighting for the Deontic programming language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "deontic",
+      "aliases": ["Deontic", "deontic"],
+      "extensions": [".deo"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "deontic",
+      "scopeName": "source.deontic",
+      "path": "./syntaxes/deontic.tmLanguage.json"
+    }]
+  }
+}
